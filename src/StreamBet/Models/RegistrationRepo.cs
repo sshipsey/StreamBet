@@ -8,6 +8,11 @@ namespace StreamBet.Models
     {
         private readonly StreamerDbContext _db;
 
+        public RegistrationRepo(StreamerDbContext db)
+        {
+            _db = db;
+        }
+
         public Streamer AddStreamer(Streamer s)
         {
             _db.Streamers.Add(s);
