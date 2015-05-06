@@ -155,3 +155,9 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+# ASPNET5
+.vs*/
+bower_components*/
+node_modules*/
+wwwroot*/

@@ -1,5 +1,6 @@
 ﻿{
   "webroot": "wwwroot",
+  "userSecretsId": "aspnet5-StreamBet",
   "version": "1.0.0-*",
 
 "dependencies": {
@@ -8,8 +9,9 @@
         "EntityFramework.SqlServer": "7.0.0-beta4",
         "EntityFramework.Commands": "7.0.0-beta4",
         "Microsoft.AspNet.Mvc": "6.0.0-beta4",
-        "Microsoft.AspNet.Diagnostics": "1.0.0-beta1",
-        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4"
+        "Microsoft.AspNet.Diagnostics": "1.0.0-beta4",
+        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
+        "Microsoft.Framework.ConfigurationModel.UserSecrets": "1.0.0-beta4"
     },
 
   "commands": {

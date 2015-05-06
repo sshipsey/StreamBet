@@ -1,7 +1,7 @@
 ﻿{
 	"Data": {
 		"DefaultConnection": {
-      "ConnectionString": "Server=tcp:streambet.database.windows.net,1433;Database=StreamBet;User ID=WebUser@streambet;Password=;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;"
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=StreamBetDB;Trusted_Connection=True;MultipleActiveResultSets=true"
 		}
 	}
 }

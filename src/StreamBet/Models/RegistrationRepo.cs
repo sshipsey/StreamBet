@@ -1,30 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StreamBet.Models
 {
     public class RegistrationRepo : IRegistrationRepo
     {
-        private readonly StreamerDbContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public RegistrationRepo(StreamerDbContext db)
+        public RegistrationRepo(ApplicationDbContext db)
         {
             _db = db;
         }
 
-        public Streamer AddStreamer(Streamer s)
+        public async Task AddStreamerAsync(Streamer s)
         {
             _db.Streamers.Add(s);
-            return s;
+            await _db.SaveChangesAsync();
         }
 
-        public bool DeleteStreamer(int id)
+        public async Task<bool> DeleteStreamerAsync(int id)
         {
-            var streamer = _db.Streamers.FirstOrDefault(s => s.Id == id);
+            var streamer = await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
             if (streamer != null)
             {
                 _db.Streamers.Remove(streamer);
+                await _db.SaveChangesAsync();
                 return true;
             }
             else
@@ -33,23 +35,14 @@ namespace StreamBet.Models
             }
         }
 
-        public Streamer GetStreamer(int id)
+        public async Task<Streamer> GetStreamerAsync(int id)
         {
-            var streamer = _db.Streamers.FirstOrDefault(s => s.Id == id);
-            if (streamer != null)
-            {
-                return streamer;
-            }
-            else
-            {
-                //TODO: Fix this
-                return new Streamer();
-            }
+            return await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
         }
 
-        public IEnumerable<Streamer> GetStreamers()
+        public IAsyncEnumerable<Streamer> GetStreamers()
         {
-            return _db.Streamers.AsEnumerable();
+            return _db.Streamers.AsAsyncEnumerable();
         }
     }
 }

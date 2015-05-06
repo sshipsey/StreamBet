@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StreamBet.Models
 {
     public interface IRegistrationRepo
     {
-        IEnumerable<Streamer> GetStreamers();
-        Streamer GetStreamer(int id);
-        Streamer AddStreamer(Streamer s);
-        bool DeleteStreamer(int id);
+        IAsyncEnumerable<Streamer> GetStreamers();
+
+        Task<Streamer> GetStreamerAsync(int id);
+
+        Task AddStreamerAsync(Streamer s);
+
+        Task<bool> DeleteStreamerAsync(int id);
     }
 }
