@@ -18,19 +18,20 @@ namespace StreamBet.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Streamer> GetAllStreamers()
+        public IAsyncEnumerable<Streamer> GetAllStreamers()
         {
             return _registrationRepo.GetStreamers();
         }
 
-        [HttpGet("{id:int}", Name = "GetStreamerById")]
-        public IActionResult GetStreamerById(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStreamerById(int id)
         {
-            var streamer = _registrationRepo.GetStreamer(id);
+            var streamer = await _registrationRepo.GetStreamerAsync(id);
             if (streamer == null)
             {
                 return HttpNotFound();
             }
+
             return new ObjectResult(streamer);
         }
 
