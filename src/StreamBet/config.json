@@ -1,4 +1,7 @@
 ﻿{
+  "AppSettings": {
+    "SiteTitle": "Stream Bet"
+  },
 	"Data": {
 		"DefaultConnection": {
       "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=StreamBetDB;Trusted_Connection=True;MultipleActiveResultSets=true"
