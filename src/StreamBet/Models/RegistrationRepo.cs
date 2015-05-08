@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using StreamBet.ViewModels;
 
 namespace StreamBet.Models
 {
@@ -17,6 +18,14 @@ namespace StreamBet.Models
         public async Task AddStreamerAsync(Streamer s)
         {
             _db.Streamers.Add(s);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task EditStreamerAsync(int id, EditViewModel model)
+        {
+            var streamer = await this.GetStreamerAsync(id);
+            streamer.Name = model.Name;
+            streamer.StreamLink = model.StreamLink;
             await _db.SaveChangesAsync();
         }
 

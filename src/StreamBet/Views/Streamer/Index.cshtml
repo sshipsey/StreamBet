@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Streamer>
+@{
+    ViewBag.Title = "Streamers";
+}
+
+<h2>@ViewBag.Title</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Stream Link</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var streamer in this.Model)
+    {
+        <tr>
+            <td>@streamer.Id</td>
+            <td>@streamer.Name</td>
+            <td><a href="@streamer.StreamLink">@streamer.StreamLink</a></td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@streamer.Id">Edit</a>
+                <a asp-action="Delete" asp-route-id="@streamer.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<p><a class="btn btn-primary" role="button" asp-action="New">New streamer</a></p>
