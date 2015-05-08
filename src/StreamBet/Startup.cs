@@ -42,7 +42,7 @@ namespace StreamBet
             services.AddMvc();
 
             // Register dependency injection
-            services.AddScoped<IRegistrationRepo, RegistrationRepo>();
+            services.AddScoped<IStreamerRepo, StreamerRepo>();
         }
 
         public void Configure(IApplicationBuilder app)

@@ -10,23 +10,23 @@ namespace StreamBet.Controllers
     [Route("api/[controller]")]
     public class StreamersController : Controller
     {
-        private IRegistrationRepo _registrationRepo;
+        private IStreamerRepo _StreamerRepo;
 
-        public StreamersController(IRegistrationRepo registrationRepo)
+        public StreamersController(IStreamerRepo StreamerRepo)
         {
-            _registrationRepo = registrationRepo;
+            _StreamerRepo = StreamerRepo;
         }
 
         [HttpGet]
         public IAsyncEnumerable<Streamer> GetAllStreamers()
         {
-            return _registrationRepo.GetStreamers();
+            return _StreamerRepo.GetStreamers();
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStreamerById(int id)
         {
-            var streamer = await _registrationRepo.GetStreamerAsync(id);
+            var streamer = await _StreamerRepo.GetStreamerAsync(id);
             if (streamer == null)
             {
                 return HttpNotFound();

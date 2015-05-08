@@ -11,9 +11,9 @@ namespace StreamBet.Controllers
     [Route("[controller]")]
     public class StreamerController : Controller
     {
-        private IRegistrationRepo Repository { get; }
+        private IStreamerRepo Repository { get; }
 
-        public StreamerController(IRegistrationRepo repository)
+        public StreamerController(IStreamerRepo repository)
         {
             this.Repository = repository;
         }

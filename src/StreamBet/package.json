@@ -4,6 +4,7 @@
 	"private": true,
 	"devDependencies": {
     "gulp": "3.8.11",
+    "gulp-tsc" : "0.9.4",
     "rimraf": "2.3.3"
 	}
 }
