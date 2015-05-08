@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding Clean='clean' ProjectOpened='copy' />
 
 /*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
