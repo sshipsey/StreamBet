@@ -19,7 +19,7 @@
             <td><a href="@streamer.StreamLink">@streamer.StreamLink</a></td>
             <td>
                 <a asp-action="Edit" asp-route-id="@streamer.Id">Edit</a>
-                <a asp-action="Delete" asp-route-id="@streamer.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@streamer.Id" data-method="post" data-confirm="Are you sure?">Delete</a>
             </td>
         </tr>
     }

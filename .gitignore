@@ -161,3 +161,4 @@ $RECYCLE.BIN/
 bower_components*/
 node_modules*/
 wwwroot*/
+typings*/
