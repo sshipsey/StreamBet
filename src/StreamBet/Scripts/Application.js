@@ -4,7 +4,7 @@ $(function () {
 var Streamer;
 (function (_Streamer) {
     //Local (Debug) Mode
-    var apiUrl = "http://localhost:62892/api";
+    var apiUrl = "http://localhost:62892/api/";
     var Streamer = (function () {
         function Streamer() {
         }

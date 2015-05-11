@@ -6,7 +6,7 @@ $(function (): void {
 
 module Streamer {
     //Local (Debug) Mode
-    var apiUrl: string = "http://localhost:62892/api";
+    var apiUrl: string = "http://localhost:62892/api/";
     
     class Streamer {
         Id: number;
