@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StreamBet.ViewModels;
+using System.Net.Http;
 
 namespace StreamBet.Models
 {
@@ -46,12 +47,26 @@ namespace StreamBet.Models
 
         public async Task<Streamer> GetStreamerAsync(int id)
         {
-            return await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
+            Streamer x = await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
+            using (HttpClient cli = new HttpClient())
+            {
+                dynamic result = await cli.GetAsync("http://api.twitch.tv/kraken/streams/" + x.Name);
+
+                if (result.stream != null)
+                {
+                    x.IsLive = true;
+                }
+                else
+                {
+                    x.IsLive = false;
+                }
+            }
+            return x;
         }
 
         public IAsyncEnumerable<Streamer> GetStreamers()
         {
             return _db.Streamers.AsAsyncEnumerable();
-        }
+        } 
     }
 }

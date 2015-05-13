@@ -13,7 +13,9 @@
       "Microsoft.Framework.ConfigurationModel.Json >= 1.0.0-beta4",
       "Microsoft.Framework.ConfigurationModel.UserSecrets >= 1.0.0-beta4"
     ],
-    "DNX,Version=v4.5.1": [],
+    "DNX,Version=v4.5.1": [
+      "framework/System.Net.Http >= 4.0.0.0"
+    ],
     "DNXCore,Version=v5.0": []
   },
   "libraries": {
