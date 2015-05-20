@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using TwitchAPI.Models;
 
 namespace StreamBet.Models
 {
@@ -29,6 +30,20 @@ namespace StreamBet.Models
         [NotMapped]
         public bool IsLive { get; set; }
 
+        public async Task<bool> getLiveStatus()
+        {
+            Stream s = new Stream();
+            await s.getStream(this.Name);
+
+            if (s.SStream != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     public class StreamerStatusModel

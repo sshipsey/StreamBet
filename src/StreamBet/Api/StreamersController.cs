@@ -18,9 +18,9 @@ namespace StreamBet.Controllers
         }
 
         [HttpGet]
-        public IAsyncEnumerable<Streamer> GetAllStreamers()
+        public async Task<IAsyncEnumerable<Streamer>> GetAllStreamers()
         {
-            return _StreamerRepo.GetStreamers();
+            return await _StreamerRepo.GetStreamers();
         }
 
         [HttpGet("{id}")]

@@ -8,7 +8,7 @@ namespace StreamBet.Models
 {
     public interface IStreamerRepo
     {
-        IAsyncEnumerable<Streamer> GetStreamers();
+        Task<IAsyncEnumerable<Streamer>> GetStreamers();
 
         Task<Streamer> GetStreamerAsync(int id);
 

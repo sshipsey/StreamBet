@@ -63,8 +63,11 @@ namespace StreamBet.Models
             return st;
         }
         
-        public IAsyncEnumerable<Streamer> GetStreamers()
+        public async Task<IAsyncEnumerable<Streamer>> GetStreamers()
         {
+
+            await _db.Streamers.ForEachAsync(async st => st.IsLive = await st.getLiveStatus());
+            
             return _db.Streamers.AsAsyncEnumerable();
         } 
     }
