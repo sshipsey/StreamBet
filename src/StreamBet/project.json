@@ -13,7 +13,8 @@
         "Microsoft.AspNet.Diagnostics": "1.0.0-beta4",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
         "Microsoft.Framework.ConfigurationModel.UserSecrets": "1.0.0-beta4",
-        "Twixel": "2.0.2"
+        "Twixel": "2.0.2",
+        "TwitchAPI": "1.0.0-*"
     },
 
     "commands": {

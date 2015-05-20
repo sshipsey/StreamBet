@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using StreamBet.Models;
-using System.Net.Http;
 using System.Threading.Tasks;
+using System;
 
 namespace TwitchAPI.Models
 {
@@ -50,15 +49,17 @@ namespace TwitchAPI.Models
             this.Logo = logo;
             this.Staff = staff;
         }
-        
 
-        public async Task<User> GetUser(Streamer s)
+        public User()
         {
-            using (HttpClient cli = new HttpClient())
-            {
-                var r = await cli.GetAsync("https://api.twitch.tv/kraken/users/" + s.Name);
-                return JsonConvert.DeserializeObject<User>(r.Content.ToString());
-            }
+
+        }
+
+
+        public async Task<User> GetUser(string n)
+        {
+            var u = await HelperMethods.HttpGet(new Uri(TwitchConstants.baseUserUrl + n));
+            return JsonConvert.DeserializeObject<User>(u);
         }
     }
 }

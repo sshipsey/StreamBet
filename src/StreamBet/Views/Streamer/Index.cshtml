@@ -15,7 +15,15 @@
     @foreach(var streamer in this.Model)
     {
         <tr>
-            <td></td>
+            <td>
+            @if (streamer.IsLive)
+            {
+                <p>LIVE!</p>
+            }
+            else
+            {
+                <p>OFFLINE!</p>
+            }</td>
             <td>@streamer.Id</td>
             <td>@streamer.Name</td>
             <td><a href="@streamer.StreamLink">@streamer.StreamLink</a></td>

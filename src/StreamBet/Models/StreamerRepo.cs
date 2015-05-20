@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StreamBet.ViewModels;
-using System.Net.Http;
+using TwitchAPI.Models;
 
 namespace StreamBet.Models
 {
@@ -47,7 +46,21 @@ namespace StreamBet.Models
 
         public async Task<Streamer> GetStreamerAsync(int id)
         {
-            return await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
+            Streamer st =  await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
+
+            Stream ss = new Stream();
+            await ss.getStream(st.Name);
+
+            if (ss.SStream != null)
+            {
+                st.IsLive = true;
+            }
+            else
+            {
+                st.IsLive = false;
+            }
+
+            return st;
         }
         
         public IAsyncEnumerable<Streamer> GetStreamers()
