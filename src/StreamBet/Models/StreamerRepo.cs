@@ -47,23 +47,9 @@ namespace StreamBet.Models
 
         public async Task<Streamer> GetStreamerAsync(int id)
         {
-            Streamer x = await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
-            using (HttpClient cli = new HttpClient())
-            {
-                dynamic result = await cli.GetAsync("http://api.twitch.tv/kraken/streams/" + x.Name);
-
-                if (result.stream != null)
-                {
-                    x.IsLive = true;
-                }
-                else
-                {
-                    x.IsLive = false;
-                }
-            }
-            return x;
+            return await _db.Streamers.SingleOrDefaultAsync(s => s.Id == id);
         }
-
+        
         public IAsyncEnumerable<Streamer> GetStreamers()
         {
             return _db.Streamers.AsAsyncEnumerable();
