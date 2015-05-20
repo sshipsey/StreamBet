@@ -54,11 +54,10 @@ namespace TwitchAPI.Models
 
         public async Task<User> GetUser(Streamer s)
         {
-                using (HttpClient cli = new HttpClient())
+            using (HttpClient cli = new HttpClient())
             {
                 var r = await cli.GetAsync("https://api.twitch.tv/kraken/users/" + s.Name);
-                User u = JsonConvert.DeserializeObject<User>(r.Content.ToString());
-                return u;
+                return JsonConvert.DeserializeObject<User>(r.Content.ToString());
             }
         }
     }
